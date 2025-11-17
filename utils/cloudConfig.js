@@ -2,20 +2,43 @@ const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.CLOUD_API_KEY,
-    api_secret: process.env.CLOUD_API_SCERET
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
 });
 
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: 'wanderlust_DEV',
-    allowedFormats: ['png', 'jpeg', 'jpg'],
-  },
+    cloudinary: cloudinary,
+    params: {
+        folder: 'wanderlust_DEV',
+        allowed_formats: ['png', 'jpeg', 'jpg'],
+    },
 });
 
 module.exports = {
     cloudinary,
     storage
 };
+
+
+// const cloudinary = require('cloudinary').v2;
+// const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+// cloudinary.config({
+//     cloud_name: process.env.CLOUD_NAME,
+//     api_key: process.env.CLOUD_API_KEY,
+//     api_secret: process.env.CLOUD_API_SCERET
+// });
+
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: {
+//     folder: 'wanderlust_DEV',
+//     allowedFormats: ['png', 'jpeg', 'jpg'],
+//   },
+// });
+
+// module.exports = {
+//     cloudinary,
+//     storage
+// };
